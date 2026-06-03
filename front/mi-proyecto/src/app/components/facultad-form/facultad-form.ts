@@ -27,10 +27,13 @@ export class FacultadFormComponent {
 
   submit(): void {
     if (this.form.invalid) return;
+    this.enviado = true;
     this.service.create(this.form.value as any).subscribe({
       next: () => this.router.navigate(['/facultades']),
-      error: () => (this.error = 'Error al crear la facultad'),
+      error: () => {
+        this.error = 'Error al crear la facultad';
+        this.enviado = false;
+      },
     });
-    this.enviado = true;
   }
 }

@@ -3,6 +3,7 @@ package com.parcial.parcialweb.services;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.parcial.parcialweb.entities.FacultadEntity;
 import com.parcial.parcialweb.repositories.FacultadRepository;
@@ -10,6 +11,7 @@ import com.parcial.parcialweb.repositories.FacultadRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 
+@Service
 public class FacultadService {
     
 
