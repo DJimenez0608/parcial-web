@@ -1,12 +1,14 @@
 package com.parcial.parcialweb.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,18 +23,22 @@ import org.hibernate.annotations.SQLRestriction;
 @AllArgsConstructor
 @SQLRestriction(value = "status = 0")
 @SQLDelete(sql = "UPDATE arco SET status = 1 WHERE id=?")
-public class ProgramaAcademicoEntity {
+
+public class FacultadEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String nombre;
-    private int duracion;
-    private String nivel;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_facultad", nullable = false)
-    private FacultadEntity facultad;
+    private String nombre;
+    private String decano;
+    private String ubicacion;
+
+    @OneToMany(mappedBy = "facultad", fetch = FetchType.LAZY)
+    private List<ProgramaAcademicoEntity> programaAcademicoEntities = new ArrayList<>();
+
+
+
 
 }
