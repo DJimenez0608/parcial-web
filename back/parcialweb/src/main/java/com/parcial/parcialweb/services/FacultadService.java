@@ -49,5 +49,13 @@ public class FacultadService {
             }
 
 
-
+            //metodo para actualizar una facultad
+    public void actualizarFacultad(int id, String nombre, String decano, String ubicacion) {
+        FacultadEntity facultad = facultadRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Facultad no encontrada con id: " + id));
+        facultad.setNombre(nombre);
+        facultad.setDecano(decano);
+        facultad.setUbicacion(ubicacion);
+        facultadRepository.save(facultad);
+    }
 }
