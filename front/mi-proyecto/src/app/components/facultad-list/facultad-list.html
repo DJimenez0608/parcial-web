@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="header">
+    <h1>Facultades</h1>
+    <a routerLink="/facultades/nueva" class="btn-primary">+ Nueva facultad</a>
+  </div>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <p *ngIf="!error && facultades.length === 0">No hay facultades registradas.</p>
+
+  <table *ngIf="facultades.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Decano</th>
+        <th>Ubicación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let f of facultades">
+        <td>{{ f.id }}</td>
+        <td>{{ f.nombre }}</td>
+        <td>{{ f.decano }}</td>
+        <td>{{ f.ubicacion }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

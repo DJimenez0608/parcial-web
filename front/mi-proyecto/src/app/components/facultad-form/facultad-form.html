@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="header">
+    <h1>Nueva Facultad</h1>
+    <a routerLink="/facultades" class="btn-secondary">← Volver</a>
+  </div>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="field">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" formControlName="nombre" placeholder="Ej: Facultad de Ingeniería" />
+      <span class="hint" *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+        El nombre es requerido
+      </span>
+    </div>
+
+    <div class="field">
+      <label for="decano">Decano</label>
+      <input id="decano" formControlName="decano" placeholder="Ej: Juan Pérez" />
+      <span class="hint" *ngIf="form.get('decano')?.invalid && form.get('decano')?.touched">
+        El decano es requerido
+      </span>
+    </div>
+
+    <div class="field">
+      <label for="ubicacion">Ubicación</label>
+      <input id="ubicacion" formControlName="ubicacion" placeholder="Ej: Bloque A, Piso 2" />
+      <span class="hint" *ngIf="form.get('ubicacion')?.invalid && form.get('ubicacion')?.touched">
+        La ubicación es requerida
+      </span>
+    </div>
+
+    <button type="submit" class="btn-primary" [disabled]="form.invalid || enviado">
+      Guardar
+    </button>
+  </form>
+</div>
